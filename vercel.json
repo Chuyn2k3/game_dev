@@ -1,19 +1,41 @@
 {
-  "routes": [
+  "cleanUrls": true,
+  "headers": [
     {
-      "src": "/(.*\\.(data|wasm|symbols\\.json)\\.gz)",
-      "headers": { "Content-Encoding": "gzip" },
-      "continue": true
+      "source": "/Build/(.*\\.br)",
+      "headers": [
+        {
+          "key": "Content-Encoding",
+          "value": "br"
+        }
+      ]
     },
     {
-      "src": "/(.*\\.(data|wasm|symbols\\.json)\\.br)",
-      "headers": { "Content-Encoding": "br" },
-      "continue": true
+      "source": "/Build/(.*\\.gz)",
+      "headers": [
+        {
+          "key": "Content-Encoding",
+          "value": "gzip"
+        }
+      ]
     },
     {
-      "src": "/(.*\\.wasm.*)",
-      "continue": true,
-      "headers": { "Content-Type": "application/wasm" }
+      "source": "/Build/(.*\\.wasm\\.br)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/wasm"
+        }
+      ]
+    },
+    {
+      "source": "/Build/(.*\\.js\\.br)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        }
+      ]
     }
   ]
 }
