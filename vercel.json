@@ -1,0 +1,19 @@
+{
+  "routes": [
+    {
+      "src": "/(.*\\.(data|wasm|symbols\\.json)\\.gz)",
+      "headers": { "Content-Encoding": "gzip" },
+      "continue": true
+    },
+    {
+      "src": "/(.*\\.(data|wasm|symbols\\.json)\\.br)",
+      "headers": { "Content-Encoding": "br" },
+      "continue": true
+    },
+    {
+      "src": "/(.*\\.wasm.*)",
+      "continue": true,
+      "headers": { "Content-Type": "application/wasm" }
+    }
+  ]
+}
